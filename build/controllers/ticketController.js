@@ -18,7 +18,7 @@ class TicketController {
     getTickets(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const ticket = yield database_1.default.query("SELECT id_ticket, user_ticket,producto,ticket.create_at,id_pedido,estado,producto.name, producto.valor FROM ticket INNER JOIN producto ON producto.id = ticket.producto WHERE estado = 1 AND user_ticket =?", [id]);
+            const ticket = yield database_1.default.query("SELECT id_ticket, user_ticket,producto,ticket.create_at,id_pedido,estado,producto.name, producto.valor, producto.descripcion FROM ticket INNER JOIN producto ON producto.id = ticket.producto WHERE estado = 1 AND user_ticket =?", [id]);
             if (ticket.length > 0) {
                 return res.json(ticket);
             }

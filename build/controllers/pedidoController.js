@@ -47,8 +47,8 @@ class PedidoController {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             yield database_1.default.query("INSERT INTO pedido set ?", [req.body]);
-            const id_pedido = yield database_1.default.query("SELECT id FROM pedido WHERE estado_ped = true");
-            yield database_1.default.query("UPDATE pedido set estado_ped = false WHERE estado_ped = true");
+            const id_pedido = yield database_1.default.query("SELECT id FROM pedido WHERE value_pedido = 1");
+            yield database_1.default.query("UPDATE pedido set value_pedido = 0 WHERE value_pedido = 1");
             return res.json(id_pedido[0]);
         });
     }

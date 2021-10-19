@@ -6,7 +6,7 @@ class TicketController {
   public async getTickets(req: Request, res: Response): Promise<any> {
     const { id } = req.params;
     const ticket = await pool.query(
-      "SELECT id_ticket, user_ticket,producto,ticket.create_at,id_pedido,estado,producto.name, producto.valor FROM ticket INNER JOIN producto ON producto.id = ticket.producto WHERE estado = 1 AND user_ticket =?",
+      "SELECT id_ticket, user_ticket,producto,ticket.create_at,id_pedido,estado,producto.name, producto.valor, producto.descripcion FROM ticket INNER JOIN producto ON producto.id = ticket.producto WHERE estado = 1 AND user_ticket =?",
       [id]
     );
     if (ticket.length > 0) {
